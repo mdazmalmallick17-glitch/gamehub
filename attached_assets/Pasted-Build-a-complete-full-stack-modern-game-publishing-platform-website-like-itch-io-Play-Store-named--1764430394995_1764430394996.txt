@@ -1,0 +1,148 @@
+Build a complete full-stack modern game publishing platform website like itch.io / Play Store named **HarysCode** with both **Admin Panel** and **User Dashboard**, using any modern stack (React/Next.js or HTML-CSS-JS frontend + Node/Express backend + MongoDB/MySQL database). The platform will be used to upload, review, rate, comment and download Android games (APK files).
+
+------------------------------
+🌟 CORE REQUIREMENTS
+------------------------------
+• Fully working website (not prototype)
+• Database-connected authentication system (NO Firebase)
+• Admin and User login segmentation
+• Responsive UI like Steam / Epic Games Store with animations
+• Dark mode futuristic gaming theme
+
+------------------------------
+🔐 AUTHENTICATION SYSTEM
+------------------------------
+• Login screen displayed on first visit
+• Login options:
+  1. Login as Admin
+  2. Create New User Account
+  3. Already Have Account Login
+• Username must be in email format ending with @gmail.com (no real verification)
+• Password must be at least 8 characters
+• Assign auto-generated **Unique User ID = 7 digits**
+• Save all accounts in database
+
+• ADMIN CREDENTIALS:
+  username: admin.admin
+  password: admin9123761447
+
+------------------------------
+👑 ADMIN FEATURES
+------------------------------
+• Manage all users (Ban, Unban, Feature User)
+• Manage all games (Delete, Edit, Approve, Reject)
+• Pending approvals list (for uploaded games)
+• Upload Featured Video (YouTube URL → auto thumbnail)
+• Featured video must appear on Home page until replaced
+• Upload own games as admin
+• View platform analytics:
+  - Total users
+  - Total games
+  - Number of downloads
+  - Rating averages
+  - Most liked game
+  - Most downloaded game
+• Activity tracking system (recent uploads, users joined, comments posted)
+
+------------------------------
+🕹 USER FEATURES
+------------------------------
+• Create/edit profile (profile image, username, title, bio)
+• Upload games (pending approval required)
+• Upload fields:
+  - Game Icon (image)
+  - 2–3 Screenshots
+  - APK upload (drag & drop)
+  - External download link (required)
+  - Game Name
+  - Category Selector
+  - Game Description
+• After approval → game visible on homepage & search
+• Rate game 1-5 stars (average rating displayed)
+• Like / Dislike buttons
+• Add comments and replies (display username + time)
+• Users can edit or delete their comments
+• Save like/dislike status per user
+
+------------------------------
+🏠 MAIN HOMEPAGE FEATURES
+------------------------------
+• Beautiful featured video banner
+• Search bar with category filter dropdown
+• Search results:
+  - If no results → Show "No Game Found"
+  - If match → Show game cards like PlayStore (image + rating + views)
+• Sections:
+  - Recent uploads
+  - Featured games
+  - Trending games
+  - Most downloaded
+  - Top rated
+• Game detail page includes:
+  - Title, icon, screenshots slideshow
+  - Description
+  - Ratings & Reviews section
+  - Like / Dislike system
+  - Comment system
+  - Download APK button
+  - External Link button
+  - Game publisher profile link
+
+------------------------------
+📦 BACKEND & DATABASE
+------------------------------
+• Node.js / Express API endpoints:
+  /api/auth/register
+  /api/auth/login
+  /api/users
+  /api/games
+  /api/upload
+  /api/reviews
+  /api/ratings
+  /api/likes
+
+• MongoDB / MySQL schema:
+  Users
+  Games
+  Uploads
+  Reviews
+  Ratings
+  Downloads Log
+  Like/Dislike records
+
+• File storage system for game files and images
+• Pending → Approved status workflow
+
+------------------------------
+🎭 UI / DESIGN REQUIREMENTS
+------------------------------
+• Futuristic digital style like Steam/Epic
+• Animated buttons & card hover effects
+• Game grid view layout
+• Profile page with cover background
+• Loading skeletons
+• Toast success/error messages
+
+------------------------------
+📌 EXTRA FEATURES
+------------------------------
+• Subscribe button on top right linking to:
+  https://youtube.com/@haryscode?si=8oR4hR1xMrE6AimH
+• Admin access protected using middleware
+• LocalStorage/SessionStorage token system
+• Download counter + analytics
+• Sorting (Newest / Top Rated / Most Popular / Category)
+• Mobile responsive
+• Smooth transitions and glassmorphism style
+
+------------------------------
+🚀 DEPLOYMENT REQUIREMENTS
+------------------------------
+• Provide full documentation
+• Provide database import file
+• Backend + frontend final project folder
+• Instructions to run locally:
+  npm install
+  npm start
+• Instructions to deploy on Vercel / Render / Railway / cPanel / Docker
+• Ensure all features are fully working end-to-end

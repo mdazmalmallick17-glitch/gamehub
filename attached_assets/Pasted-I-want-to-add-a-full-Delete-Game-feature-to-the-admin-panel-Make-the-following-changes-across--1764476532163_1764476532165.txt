@@ -1,0 +1,70 @@
+I want to add a full "Delete Game" feature to the admin panel.  
+Make the following changes across the project:
+
+# 1. ADMIN PANEL FRONTEND CHANGES
+- Add a visible “Delete Game” button in the admin panel for each game.
+- Style it as a red button (danger type).
+- When clicked, it must show a confirmation modal:
+  "Are you sure you want to permanently delete this game? This action cannot be undone."
+- If the admin confirms, send a DELETE request to:
+  DELETE /api/games/:id
+
+Example call:
+await fetch(`${VITE_API_URL}/api/games/${game.id}`, { method: "DELETE" })
+
+- After deleting:
+  ✓ Remove the game from the displayed list instantly without refresh
+  ✓ Show a success message “Game deleted successfully”
+
+# 2. BACKEND ROUTE
+Create a secure DELETE endpoint:
+
+DELETE /api/games/:id
+
+The route should:
+1. Verify the game exists.
+2. Delete the game from the database.
+3. Also remove associated files:
+   - thumbnail
+   - screenshots
+   - icons
+   Files are stored inside ./uploads so remove them using fs.unlinkSync (with try/catch so server doesn't break).
+4. Return:
+{ success: true, message: "Game deleted successfully" }
+
+# 3. DATABASE
+- Remove the game entry completely.
+- Remove screenshots array and thumbnail values.
+- No leftover orphaned data.
+
+# 4. FILE DELETION LOGIC
+Add helper function:
+
+function deleteIfExists(path) {
+  if (fs.existsSync(path)) {
+      fs.unlinkSync(path);
+  }
+}
+
+Use this to delete:
+uploads/thumbnails/<file>
+uploads/screenshots/<file>
+uploads/icons/<file>
+
+# 5. SECURITY
+- Only admins should be allowed to delete games.
+- The DELETE route should check admin session or auth token. If not admin:
+return 403 { error: "Unauthorized" }
+
+# 6. OPTIONAL IMPROVEMENTS
+Add logging:
+console.log(`Game ${id} deleted by admin`)
+
+# 7. TESTING
+Ensure:
+- deleting a game removes it from UI
+- refreshing the page shows it is still gone
+- API returns 200 success
+- uploaded files on disk are removed
+
+Apply all needed changes to frontend, backend, and routes so this feature works end-to-end.

@@ -1,0 +1,76 @@
+Fix the following issues in the existing codebase of my game marketplace website and add required features:
+
+BUG FIX: IMAGE UPLOAD + DISPLAY
+----------------------------------------------------
+Currently when uploading game images (icons, screenshots, banners, profile pictures), the images do not display properly. Instead, only a small broken icon symbol appears.
+
+Required changes:
+1. Replace the current URL input image system with direct drag-and-drop or file upload system.
+2. When the user uploads an image, save it to the backend (e.g., /uploads/images directory or cloud storage if available).
+3. Store the actual uploaded image path in the database (not as base64 or blank URL).
+4. Display uploaded images in full resolution like Google Play Store (rounded corners, full preview).
+5. Fix video thumbnail: generate a thumbnail preview and show it on home page instead of blank box.
+6. Add automatic thumbnail creation for uploaded video files.
+
+TECH SIGNATURES:
+- Use multipart/form-data for uploads.
+- Use Express file upload middleware (multer).
+- Serve files publicly via `/uploads` static folder.
+- Update frontend components to fetch and render real uploaded images.
+
+FEATURE ADD: REPORT SYSTEM + ADMIN INBOX
+----------------------------------------------------
+Add a reporting system so users can report abusive comments, inappropriate content or users.
+
+Requirements:
+1. Add a "Report" button next to comments, messages and profiles.
+2. When a report is submitted:
+   - store it inside database table: `reports`
+   - fields: reportId, reportedByUserId, targetUserId or commentId, reportMessage, dateTime, status('pending')
+3. Display all reports inside Admin Dashboard under a new tab called **Inbox Reports**
+4. Admin should be able to:
+   - read full report text
+   - reply to the user
+   - delete if resolved
+   - block reported user if required
+
+FEATURE: LIKE / DISLIKE SYSTEM + STAR RATING
+----------------------------------------------------
+Add full working rating system:
+- Users can like or dislike any game
+- Add star rating 1–5 system
+- Display rating average on game card
+- Prevent multiple ratings from same user
+
+DATABASE EXAMPLE STRUCTURE
+-------------------------------
+games
+users
+comments
+likes_dislikes
+screenshots
+reports
+
+FRONTEND IMPROVEMENTS
+-------------------------------
+- Ensure text color automatically adjusts to avoid white text on white background or black text on black background using CSS theme variables.
+- Game cards should display:
+  * Game Icon (real image)
+  * Title
+  * Description
+  * Average Rating stars
+  * Download button
+  * Like/Dislike count
+
+OUTPUT REQUEST
+-------------------------------
+Return complete working code including:
+- Frontend updated components
+- Backend API routes
+- Database models
+- Multer upload handler
+- Admin inbox UI layout
+- Image rendering fixes
+
+Make sure no placeholder or incomplete areas remain. Code must be valid and runnable as-is.
+
